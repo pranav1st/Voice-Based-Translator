@@ -8,6 +8,7 @@ from tkinter import ttk
 from tkinter.filedialog import asksaveasfile
 from tkinter import messagebox
 
+<<<<<<< HEAD
 
 root = Tk()
 def mictoggle():
@@ -23,6 +24,29 @@ def mictoggle():
         print("Say Hello to initiate the conversation !")
         print("..........We are trying to detect your voice..........")
             
+=======
+# Creating a recognizer instance
+recog = spr.Recognizer()
+
+# Creating a microphone instance
+mic = spr.Microphone()
+
+# Using the mic instance created as a source to capture audio
+with mic as source:
+    print("Say Hello to initiate the conversation !")
+    print("..........We are trying to detect your voice..........")
+    
+    # Eliminating echoes/gaps/disturbances in the audio being captured
+    recog.adjust_for_ambient_noise(source, duration=0.2)
+    audio = recog.listen(source)
+    
+    # Converting audio recorded into lower case text
+    Text = recog.recognize_sphinx(audio).lower()
+    
+    # Looking for prompt
+    if 'hello' in Text:
+        
+>>>>>>> parent of bbf0e5e (Login Page: #4)
         # Language code to be translated to - can be changed to translate to different languages
         to_lang = 'hi'
         
